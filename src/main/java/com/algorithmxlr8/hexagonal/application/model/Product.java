@@ -5,11 +5,6 @@ import com.algorithmxlr8.hexagonal.domain.util.ValidationUtils;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-/**
- * Core domain entity. Deliberately framework-free: no JPA, no Spring,
- * no Jackson annotations. Business invariants are enforced in the
- * constructor, not left to adapters.
- */
 public class Product {
 
     private final Long id;

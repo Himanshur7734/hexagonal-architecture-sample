@@ -6,11 +6,6 @@ import com.algorithmxlr8.hexagonal.application.model.Product;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * Implements the inbound port. This is the only class that knows both
- * "what a use case is" and "how to reach the outbound port" - adapters
- * on either side never talk to each other directly.
- */
 @Service
 @Transactional
 public class ProductService implements CreateProductUseCase {

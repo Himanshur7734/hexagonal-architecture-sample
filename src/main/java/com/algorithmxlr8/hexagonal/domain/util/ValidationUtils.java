@@ -2,10 +2,6 @@ package com.algorithmxlr8.hexagonal.domain.util;
 
 import java.math.BigDecimal;
 
-/**
- * Generic, framework-free guard clauses. Kept separate from the domain
- * model so Product only holds business rules, not raw null/blank checks.
- */
 public final class ValidationUtils {
 
     private ValidationUtils() {

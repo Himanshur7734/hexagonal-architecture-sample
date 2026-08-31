@@ -5,11 +5,6 @@ import com.algorithmxlr8.hexagonal.domain.rest.dto.ProductRequest;
 import com.algorithmxlr8.hexagonal.domain.rest.dto.ProductResponse;
 import org.springframework.stereotype.Component;
 
-/**
- * Converts between web DTOs and domain types. Kept out of the controller
- * and out of the DTOs themselves so request/response mapping has one
- * dedicated home, mirroring the persistence mapper on the outbound side.
- */
 @Component
 public class ProductWebMapper {
 

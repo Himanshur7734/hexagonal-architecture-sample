@@ -4,10 +4,6 @@ import com.algorithmxlr8.hexagonal.application.entity.ProductJpaEntity;
 import com.algorithmxlr8.hexagonal.application.model.Product;
 import org.springframework.stereotype.Component;
 
-/**
- * Converts between the domain Product and the JPA entity. Kept out of
- * the adapter class so persistence mapping has one dedicated home.
- */
 @Component
 public class ProductPersistenceMapper {
 

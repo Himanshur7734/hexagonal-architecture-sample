@@ -7,11 +7,6 @@ import com.algorithmxlr8.hexagonal.application.mapper.ProductPersistenceMapper;
 import com.algorithmxlr8.hexagonal.application.repo.ProductJpaRepository;
 import org.springframework.stereotype.Component;
 
-/**
- * The concrete driven adapter for ProductRepositoryPort. Spring wires this
- * in wherever the port is required; swapping persistence technology means
- * writing a new adapter here, not touching the domain or application layer.
- */
 @Component
 class ProductPersistenceAdapter implements ProductRepositoryPort {
 

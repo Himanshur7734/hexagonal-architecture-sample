@@ -11,10 +11,6 @@ import java.time.Instant;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-/**
- * Central place for turning exceptions into HTTP responses, kept out of
- * the controller so request handling and error mapping stay separate.
- */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 

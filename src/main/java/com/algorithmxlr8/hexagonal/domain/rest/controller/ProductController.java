@@ -14,10 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.net.URI;
 
-/**
- * Driving adapter. Depends only on the inbound port (use case), never
- * on ProductService directly, so the web layer stays swappable.
- */
 @RestController
 @RequestMapping("/api/products")
 public class ProductController {

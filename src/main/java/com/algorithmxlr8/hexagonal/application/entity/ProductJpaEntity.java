@@ -12,11 +12,6 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 
-/**
- * Persistence model. Kept separate from the domain Product on purpose:
- * JPA needs a no-arg constructor and mutable fields, the domain model
- * does not - mixing the two would leak persistence concerns into the core.
- */
 @Entity
 @Table(name = "products")
 @Getter
