@@ -17,8 +17,4 @@ public interface ProductRepositoryPort {
     Optional<Product> findById(Long id);
 
     List<Product> findAll();
-
-    void deleteById(Long id);
-
-    boolean existsById(Long id);
 }

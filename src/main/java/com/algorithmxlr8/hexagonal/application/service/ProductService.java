@@ -3,11 +3,8 @@ package com.algorithmxlr8.hexagonal.application.service;
 import com.algorithmxlr8.hexagonal.domain.model.Product;
 import com.algorithmxlr8.hexagonal.domain.port.in.CreateProductCommand;
 import com.algorithmxlr8.hexagonal.domain.port.in.CreateProductUseCase;
-import com.algorithmxlr8.hexagonal.domain.port.in.DeleteProductUseCase;
 import com.algorithmxlr8.hexagonal.domain.port.in.GetProductUseCase;
 import com.algorithmxlr8.hexagonal.domain.port.in.ListProductsUseCase;
-import com.algorithmxlr8.hexagonal.domain.port.in.UpdateProductCommand;
-import com.algorithmxlr8.hexagonal.domain.port.in.UpdateProductUseCase;
 import com.algorithmxlr8.hexagonal.domain.port.out.ProductRepositoryPort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,8 +18,7 @@ import java.util.List;
  */
 @Service
 @Transactional
-public class ProductService implements CreateProductUseCase, GetProductUseCase, ListProductsUseCase,
-        UpdateProductUseCase, DeleteProductUseCase {
+public class ProductService implements CreateProductUseCase, GetProductUseCase, ListProductsUseCase {
 
     private final ProductRepositoryPort productRepository;
 
@@ -46,22 +42,5 @@ public class ProductService implements CreateProductUseCase, GetProductUseCase, 
     @Transactional(readOnly = true)
     public List<Product> listProducts() {
         return productRepository.findAll();
-    }
-
-    @Override
-    public Product updateProduct(Long id, UpdateProductCommand command) {
-        Product product = productRepository.findById(id).orElse(null);
-        if (product == null) {
-            return null;
-        }
-        product.updateDetails(command.name(), command.description(), command.price(), command.quantity());
-        return productRepository.save(product);
-    }
-
-    @Override
-    public void deleteProduct(Long id) {
-        if (productRepository.existsById(id)) {
-            productRepository.deleteById(id);
-        }
     }
 }

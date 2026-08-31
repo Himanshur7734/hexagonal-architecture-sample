@@ -5,19 +5,13 @@ import com.algorithmxlr8.hexagonal.adapter.in.web.dto.ProductResponse;
 import com.algorithmxlr8.hexagonal.domain.model.Product;
 import com.algorithmxlr8.hexagonal.domain.port.in.CreateProductCommand;
 import com.algorithmxlr8.hexagonal.domain.port.in.CreateProductUseCase;
-import com.algorithmxlr8.hexagonal.domain.port.in.DeleteProductUseCase;
 import com.algorithmxlr8.hexagonal.domain.port.in.GetProductUseCase;
 import com.algorithmxlr8.hexagonal.domain.port.in.ListProductsUseCase;
-import com.algorithmxlr8.hexagonal.domain.port.in.UpdateProductCommand;
-import com.algorithmxlr8.hexagonal.domain.port.in.UpdateProductUseCase;
 import jakarta.validation.Valid;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,19 +30,13 @@ public class ProductController {
     private final CreateProductUseCase createProductUseCase;
     private final GetProductUseCase getProductUseCase;
     private final ListProductsUseCase listProductsUseCase;
-    private final UpdateProductUseCase updateProductUseCase;
-    private final DeleteProductUseCase deleteProductUseCase;
 
     public ProductController(CreateProductUseCase createProductUseCase,
                               GetProductUseCase getProductUseCase,
-                              ListProductsUseCase listProductsUseCase,
-                              UpdateProductUseCase updateProductUseCase,
-                              DeleteProductUseCase deleteProductUseCase) {
+                              ListProductsUseCase listProductsUseCase) {
         this.createProductUseCase = createProductUseCase;
         this.getProductUseCase = getProductUseCase;
         this.listProductsUseCase = listProductsUseCase;
-        this.updateProductUseCase = updateProductUseCase;
-        this.deleteProductUseCase = deleteProductUseCase;
     }
 
     @PostMapping
@@ -71,21 +59,5 @@ public class ProductController {
     @GetMapping
     public List<ProductResponse> getAll() {
         return listProductsUseCase.listProducts().stream().map(ProductResponse::from).toList();
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<ProductResponse> update(@PathVariable Long id, @Valid @RequestBody ProductRequest request) {
-        Product product = updateProductUseCase.updateProduct(id,
-                new UpdateProductCommand(request.name(), request.description(), request.price(), request.quantity()));
-        if (product == null) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(ProductResponse.from(product));
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
-        deleteProductUseCase.deleteProduct(id);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }

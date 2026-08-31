@@ -38,16 +38,6 @@ class ProductPersistenceAdapter implements ProductRepositoryPort {
         return jpaRepository.findAll().stream().map(this::toDomain).toList();
     }
 
-    @Override
-    public void deleteById(Long id) {
-        jpaRepository.deleteById(id);
-    }
-
-    @Override
-    public boolean existsById(Long id) {
-        return jpaRepository.existsById(id);
-    }
-
     private ProductJpaEntity toEntity(Product product) {
         return new ProductJpaEntity(product.getId(), product.getName(), product.getDescription(),
                 product.getPrice(), product.getQuantity());

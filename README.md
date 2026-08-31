@@ -1,7 +1,7 @@
 # Hexagonal Architecture Sample
 
-A minimal Product CRUD service demonstrating ports-and-adapters (hexagonal)
-architecture with Spring Boot.
+A minimal Product service (create + read) demonstrating ports-and-adapters
+(hexagonal) architecture with Spring Boot.
 
 ## Layout
 
@@ -9,7 +9,6 @@ architecture with Spring Boot.
 src/main/java/com/algorithmxlr8/hexagonal/
   domain/
     model/            Product - pure entity, no framework code
-    exception/        ProductNotFoundException
     port/in/          Inbound ports: one interface per use case
     port/out/         Outbound port: ProductRepositoryPort
   application/
@@ -45,5 +44,3 @@ App starts on `http://localhost:8080`. In-memory H2 console at
 | POST   | /api/products        | `{ "name", "description", "price", "quantity" }`   |
 | GET    | /api/products         | -                                                    |
 | GET    | /api/products/{id}     | -                                                    |
-| PUT    | /api/products/{id}     | `{ "name", "description", "price", "quantity" }`   |
-| DELETE | /api/products/{id}     | -                                                    |
