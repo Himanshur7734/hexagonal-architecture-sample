@@ -60,8 +60,12 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public ProductResponse getById(@PathVariable Long id) {
-        return ProductResponse.from(getProductUseCase.getProduct(id));
+    public ResponseEntity<ProductResponse> getById(@PathVariable Long id) {
+        Product product = getProductUseCase.getProduct(id);
+        if (product == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(ProductResponse.from(product));
     }
 
     @GetMapping
@@ -70,10 +74,13 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-    public ProductResponse update(@PathVariable Long id, @Valid @RequestBody ProductRequest request) {
+    public ResponseEntity<ProductResponse> update(@PathVariable Long id, @Valid @RequestBody ProductRequest request) {
         Product product = updateProductUseCase.updateProduct(id,
                 new UpdateProductCommand(request.name(), request.description(), request.price(), request.quantity()));
-        return ProductResponse.from(product);
+        if (product == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(ProductResponse.from(product));
     }
 
     @DeleteMapping("/{id}")

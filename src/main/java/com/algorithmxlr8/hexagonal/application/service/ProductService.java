@@ -1,6 +1,5 @@
 package com.algorithmxlr8.hexagonal.application.service;
 
-import com.algorithmxlr8.hexagonal.domain.exception.ProductNotFoundException;
 import com.algorithmxlr8.hexagonal.domain.model.Product;
 import com.algorithmxlr8.hexagonal.domain.port.in.CreateProductCommand;
 import com.algorithmxlr8.hexagonal.domain.port.in.CreateProductUseCase;
@@ -40,8 +39,7 @@ public class ProductService implements CreateProductUseCase, GetProductUseCase, 
     @Override
     @Transactional(readOnly = true)
     public Product getProduct(Long id) {
-        return productRepository.findById(id)
-                .orElseThrow(() -> new ProductNotFoundException(id));
+        return productRepository.findById(id).orElse(null);
     }
 
     @Override
@@ -52,17 +50,18 @@ public class ProductService implements CreateProductUseCase, GetProductUseCase, 
 
     @Override
     public Product updateProduct(Long id, UpdateProductCommand command) {
-        Product product = productRepository.findById(id)
-                .orElseThrow(() -> new ProductNotFoundException(id));
+        Product product = productRepository.findById(id).orElse(null);
+        if (product == null) {
+            return null;
+        }
         product.updateDetails(command.name(), command.description(), command.price(), command.quantity());
         return productRepository.save(product);
     }
 
     @Override
     public void deleteProduct(Long id) {
-        if (!productRepository.existsById(id)) {
-            throw new ProductNotFoundException(id);
+        if (productRepository.existsById(id)) {
+            productRepository.deleteById(id);
         }
-        productRepository.deleteById(id);
     }
 }
