@@ -2,7 +2,7 @@ package com.algorithmxlr8.hexagonal.domain.rest.controller;
 
 import com.algorithmxlr8.hexagonal.domain.rest.dto.ProductRequest;
 import com.algorithmxlr8.hexagonal.domain.rest.dto.ProductResponse;
-import com.algorithmxlr8.hexagonal.domain.rest.facade.ProductFacade;
+import com.algorithmxlr8.hexagonal.domain.rest.handler.ProductHandler;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,15 +16,15 @@ import java.net.URI;
 @RequestMapping("/api/products")
 public class ProductController {
 
-    private final ProductFacade productFacade;
+    private final ProductHandler productHandler;
 
-    public ProductController(ProductFacade productFacade) {
-        this.productFacade = productFacade;
+    public ProductController(ProductHandler productHandler) {
+        this.productHandler = productHandler;
     }
 
     @PostMapping
     public ResponseEntity<ProductResponse> create(@Valid @RequestBody ProductRequest request) {
-        ProductResponse response = productFacade.create(request);
+        ProductResponse response = productHandler.create(request);
         return ResponseEntity.created(URI.create("/api/products/" + response.getId())).body(response);
     }
 }

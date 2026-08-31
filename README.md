@@ -16,9 +16,9 @@ src/main/java/com/algorithmxlr8/hexagonal/
       ProductService.java         Implements CreateProductPort
     rest/
       controller/
-        ProductController.java    REST entrypoint, delegates to ProductFacade
-      facade/
-        ProductFacade.java        Wires the use case + mapper, keeps mapping out of the controller
+        ProductController.java    REST entrypoint, delegates to ProductHandler
+      handler/
+        ProductHandler.java       Wires the use case + mapper, keeps mapping out of the controller
       dto/                        Request/response types (plain classes, not records)
       mapper/                     DTO <-> domain conversion
       exception/                  REST error mapping
@@ -41,7 +41,7 @@ src/main/java/com/algorithmxlr8/hexagonal/
 The rule: `adapter` only ever declares contracts - both ports take or
 return the `Product` domain model directly, no separate command/DTO type
 in between. `domain` is where every contract gets implemented - service,
-controller, facade, persistence adapter, the web mapper, config, util.
+controller, handler, persistence adapter, the web mapper, config, util.
 `application` holds the plain data types those implementations pass
 around (the JPA entity, the domain model, the Spring Data repository) and
 the mapper that converts between them, since it only ever touches those
@@ -53,7 +53,7 @@ Spring stereotype annotation - both are registered as beans explicitly
 in `domain/config/MapperConfig.java`.
 
 The controller never touches a mapper directly - it only calls
-`ProductFacade`, which owns both the use case and the web mapper.
+`ProductHandler`, which owns both the use case and the web mapper.
 
 Swapping persistence technology means changing `domain/persistence` and
 everything under `application` - `adapter` and `domain/service` never

@@ -1,4 +1,4 @@
-package com.algorithmxlr8.hexagonal.domain.rest.facade;
+package com.algorithmxlr8.hexagonal.domain.rest.handler;
 
 import com.algorithmxlr8.hexagonal.adapter.CreateProductPort;
 import com.algorithmxlr8.hexagonal.application.model.Product;
@@ -8,12 +8,12 @@ import com.algorithmxlr8.hexagonal.domain.rest.mapper.ProductWebMapper;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ProductFacade {
+public class ProductHandler {
 
     private final CreateProductPort createProductPort;
     private final ProductWebMapper mapper;
 
-    public ProductFacade(CreateProductPort createProductPort, ProductWebMapper mapper) {
+    public ProductHandler(CreateProductPort createProductPort, ProductWebMapper mapper) {
         this.createProductPort = createProductPort;
         this.mapper = mapper;
     }
