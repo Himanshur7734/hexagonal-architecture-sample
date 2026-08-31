@@ -1,4 +1,4 @@
-package com.algorithmxlr8.hexagonal.domain.web.exception;
+package com.algorithmxlr8.hexagonal.domain.rest.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

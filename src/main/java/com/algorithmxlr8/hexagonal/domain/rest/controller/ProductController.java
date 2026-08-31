@@ -1,10 +1,10 @@
-package com.algorithmxlr8.hexagonal.domain.web.controller;
+package com.algorithmxlr8.hexagonal.domain.rest.controller;
 
 import com.algorithmxlr8.hexagonal.adapter.CreateProductUseCase;
 import com.algorithmxlr8.hexagonal.application.model.Product;
-import com.algorithmxlr8.hexagonal.domain.web.dto.ProductRequest;
-import com.algorithmxlr8.hexagonal.domain.web.dto.ProductResponse;
-import com.algorithmxlr8.hexagonal.domain.web.mapper.ProductWebMapper;
+import com.algorithmxlr8.hexagonal.domain.rest.dto.ProductRequest;
+import com.algorithmxlr8.hexagonal.domain.rest.dto.ProductResponse;
+import com.algorithmxlr8.hexagonal.domain.rest.mapper.ProductWebMapper;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,7 +32,7 @@ public class ProductController {
 
     @PostMapping
     public ResponseEntity<ProductResponse> create(@Valid @RequestBody ProductRequest request) {
-        Product product = createProductUseCase.createProduct(mapper.toCommand(request));
+        Product product = createProductUseCase.createProduct(mapper.toDomain(request));
         return ResponseEntity.created(URI.create("/api/products/" + product.getId()))
                 .body(mapper.toResponse(product));
     }

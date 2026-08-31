@@ -2,7 +2,6 @@ package com.algorithmxlr8.hexagonal.domain.service;
 
 import com.algorithmxlr8.hexagonal.adapter.CreateProductUseCase;
 import com.algorithmxlr8.hexagonal.adapter.ProductRepositoryPort;
-import com.algorithmxlr8.hexagonal.adapter.command.CreateProductCommand;
 import com.algorithmxlr8.hexagonal.application.model.Product;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,8 +22,7 @@ public class ProductService implements CreateProductUseCase {
     }
 
     @Override
-    public Product createProduct(CreateProductCommand command) {
-        Product product = Product.createNew(command.name(), command.description(), command.price(), command.quantity());
+    public Product createProduct(Product product) {
         return productRepository.save(product);
     }
 }
