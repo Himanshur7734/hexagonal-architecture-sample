@@ -3,7 +3,7 @@ package com.algorithmxlr8.hexagonal.adapter.in.web.mapper;
 import com.algorithmxlr8.hexagonal.adapter.in.web.dto.ProductRequest;
 import com.algorithmxlr8.hexagonal.adapter.in.web.dto.ProductResponse;
 import com.algorithmxlr8.hexagonal.domain.model.Product;
-import com.algorithmxlr8.hexagonal.domain.port.in.CreateProductCommand;
+import com.algorithmxlr8.hexagonal.domain.port.in.command.CreateProductCommand;
 import org.springframework.stereotype.Component;
 
 /**
