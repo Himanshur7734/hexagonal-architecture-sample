@@ -6,7 +6,7 @@ A minimal Product create service demonstrating ports-and-adapters
 ## Layout
 
 ```
-src/main/java/com/algorithmxlr8/hexagonal/
+src/main/java/com/hexagonal/
   adapter/                Ports only - the interfaces everything else talks through
     CreateProductPort.java        Inbound port (the use case), takes a Product directly
     ProductRepositoryPort.java    Outbound port (persistence contract)

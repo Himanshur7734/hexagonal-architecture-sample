@@ -11,7 +11,7 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.algorithmxlr8</groupId>
+    <groupId>com.hexagonal</groupId>
     <artifactId>hexagonal-architecture-sample</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>hexagonal-architecture-sample</name>
