@@ -2,8 +2,8 @@ package com.algorithmxlr8.hexagonal.adapter.in.web;
 
 import com.algorithmxlr8.hexagonal.adapter.in.web.dto.ProductRequest;
 import com.algorithmxlr8.hexagonal.adapter.in.web.dto.ProductResponse;
+import com.algorithmxlr8.hexagonal.adapter.in.web.mapper.ProductWebMapper;
 import com.algorithmxlr8.hexagonal.domain.model.Product;
-import com.algorithmxlr8.hexagonal.domain.port.in.CreateProductCommand;
 import com.algorithmxlr8.hexagonal.domain.port.in.CreateProductUseCase;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -23,16 +23,17 @@ import java.net.URI;
 public class ProductController {
 
     private final CreateProductUseCase createProductUseCase;
+    private final ProductWebMapper mapper;
 
-    public ProductController(CreateProductUseCase createProductUseCase) {
+    public ProductController(CreateProductUseCase createProductUseCase, ProductWebMapper mapper) {
         this.createProductUseCase = createProductUseCase;
+        this.mapper = mapper;
     }
 
     @PostMapping
     public ResponseEntity<ProductResponse> create(@Valid @RequestBody ProductRequest request) {
-        Product product = createProductUseCase.createProduct(
-                new CreateProductCommand(request.name(), request.description(), request.price(), request.quantity()));
+        Product product = createProductUseCase.createProduct(mapper.toCommand(request));
         return ResponseEntity.created(URI.create("/api/products/" + product.getId()))
-                .body(ProductResponse.from(product));
+                .body(mapper.toResponse(product));
     }
 }

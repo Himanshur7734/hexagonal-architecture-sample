@@ -1,5 +1,6 @@
 package com.algorithmxlr8.hexagonal.adapter.out.persistence;
 
+import com.algorithmxlr8.hexagonal.adapter.out.persistence.mapper.ProductPersistenceMapper;
 import com.algorithmxlr8.hexagonal.domain.model.Product;
 import com.algorithmxlr8.hexagonal.domain.port.out.ProductRepositoryPort;
 import org.springframework.stereotype.Component;
@@ -13,25 +14,17 @@ import org.springframework.stereotype.Component;
 class ProductPersistenceAdapter implements ProductRepositoryPort {
 
     private final ProductJpaRepository jpaRepository;
+    private final ProductPersistenceMapper mapper;
 
-    ProductPersistenceAdapter(ProductJpaRepository jpaRepository) {
+    ProductPersistenceAdapter(ProductJpaRepository jpaRepository, ProductPersistenceMapper mapper) {
         this.jpaRepository = jpaRepository;
+        this.mapper = mapper;
     }
 
     @Override
     public Product save(Product product) {
-        ProductJpaEntity entity = toEntity(product);
+        ProductJpaEntity entity = mapper.toEntity(product);
         ProductJpaEntity saved = jpaRepository.save(entity);
-        return toDomain(saved);
-    }
-
-    private ProductJpaEntity toEntity(Product product) {
-        return new ProductJpaEntity(product.getId(), product.getName(), product.getDescription(),
-                product.getPrice(), product.getQuantity());
-    }
-
-    private Product toDomain(ProductJpaEntity entity) {
-        return new Product(entity.getId(), entity.getName(), entity.getDescription(),
-                entity.getPrice(), entity.getQuantity());
+        return mapper.toDomain(saved);
     }
 }
