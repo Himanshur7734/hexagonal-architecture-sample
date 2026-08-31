@@ -7,42 +7,53 @@ import java.util.Objects;
 
 public class Product {
 
-    private final Long id;
-    private final String name;
-    private final String description;
-    private final BigDecimal price;
-    private final Integer quantity;
+    private Long id;
+    private String name;
+    private String description;
+    private BigDecimal price;
+    private Integer quantity;
 
-    public Product(Long id, String name, String description, BigDecimal price, Integer quantity) {
-        this.id = id;
-        this.name = ValidationUtils.requireNonBlank(name, "name");
-        this.description = description;
-        this.price = ValidationUtils.requireNonNegative(price, "price");
-        this.quantity = ValidationUtils.requireNonNegative(quantity, "quantity");
-    }
-
-    public static Product createNew(String name, String description, BigDecimal price, Integer quantity) {
-        return new Product(null, name, description, price, quantity);
+    public Product() {
     }
 
     public Long getId() {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = ValidationUtils.requireNonBlank(name, "name");
     }
 
     public String getDescription() {
         return description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public BigDecimal getPrice() {
         return price;
     }
 
+    public void setPrice(BigDecimal price) {
+        this.price = ValidationUtils.requireNonNegative(price, "price");
+    }
+
     public Integer getQuantity() {
         return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = ValidationUtils.requireNonNegative(quantity, "quantity");
     }
 
     @Override

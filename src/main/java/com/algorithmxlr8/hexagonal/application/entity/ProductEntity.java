@@ -1,34 +1,35 @@
-package com.algorithmxlr8.hexagonal.domain.rest.dto;
+package com.algorithmxlr8.hexagonal.application.entity;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.PositiveOrZero;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 import java.math.BigDecimal;
 
-public class ProductRequest {
+@Entity
+@Table(name = "products")
+public class ProductEntity {
 
-    @NotBlank
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String name;
 
     private String description;
 
-    @NotNull
-    @PositiveOrZero
     private BigDecimal price;
 
-    @NotNull
-    @PositiveOrZero
     private Integer quantity;
 
-    public ProductRequest() {
+    public Long getId() {
+        return id;
     }
 
-    public ProductRequest(String name, String description, BigDecimal price, Integer quantity) {
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.quantity = quantity;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

@@ -2,6 +2,7 @@ package com.algorithmxlr8.hexagonal.adapter;
 
 import com.algorithmxlr8.hexagonal.application.model.Product;
 
-public interface CreateProductUseCase {
+public interface CreateProductPort {
+    
     Product createProduct(Product product);
 }

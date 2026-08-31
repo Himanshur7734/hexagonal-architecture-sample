@@ -9,11 +9,21 @@ import org.springframework.stereotype.Component;
 public class ProductWebMapper {
 
     public Product toDomain(ProductRequest request) {
-        return Product.createNew(request.name(), request.description(), request.price(), request.quantity());
+        Product product = new Product();
+        product.setName(request.getName());
+        product.setDescription(request.getDescription());
+        product.setPrice(request.getPrice());
+        product.setQuantity(request.getQuantity());
+        return product;
     }
 
     public ProductResponse toResponse(Product product) {
-        return new ProductResponse(product.getId(), product.getName(), product.getDescription(),
-                product.getPrice(), product.getQuantity());
+        ProductResponse response = new ProductResponse();
+        response.setId(product.getId());
+        response.setName(product.getName());
+        response.setDescription(product.getDescription());
+        response.setPrice(product.getPrice());
+        response.setQuantity(product.getQuantity());
+        return response;
     }
 }
