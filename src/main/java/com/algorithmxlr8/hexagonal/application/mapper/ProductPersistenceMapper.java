@@ -1,4 +1,4 @@
-package com.algorithmxlr8.hexagonal.domain.persistence.mapper;
+package com.algorithmxlr8.hexagonal.application.mapper;
 
 import com.algorithmxlr8.hexagonal.application.entity.ProductJpaEntity;
 import com.algorithmxlr8.hexagonal.application.model.Product;

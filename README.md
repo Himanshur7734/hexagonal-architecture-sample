@@ -22,28 +22,30 @@ src/main/java/com/algorithmxlr8/hexagonal/
       exception/                  REST error mapping
     persistence/
       ProductPersistenceAdapter.java  Implements ProductRepositoryPort
-      mapper/                          Entity <-> domain conversion
     config/                  Spring wiring (JPA repository/entity scan)
     util/                    Framework-free helpers (validation guard clauses)
 
-  application/             Data-holding types: entity, model, repo
+  application/             Data-holding types: entity, model, repo, mapper
     model/
       Product.java               Domain model used by the ports and services
     entity/
       ProductJpaEntity.java      JPA entity
     repo/
       ProductJpaRepository.java  Spring Data repository interface
+    mapper/
+      ProductPersistenceMapper.java  Product <-> ProductJpaEntity conversion
 ```
 
 The rule: `adapter` only ever declares contracts - both ports take or
 return the `Product` domain model directly, no separate command/DTO type
 in between. `domain` is where every contract gets implemented - service,
-controller, persistence adapter, mappers, config, util. `application`
-holds the plain data types those implementations pass around (the JPA
-entity, the domain model, the Spring Data repository). Swapping
-persistence technology means changing `domain/persistence` and
-`application/entity` + `application/repo` - `adapter` and `domain/service`
-never change.
+controller, persistence adapter, the web mapper, config, util.
+`application` holds the plain data types those implementations pass
+around (the JPA entity, the domain model, the Spring Data repository) and
+the mapper that converts between them, since it only ever touches those
+two types. Swapping persistence technology means changing
+`domain/persistence` and everything under `application` - `adapter` and
+`domain/service` never change.
 
 ## Run
 
