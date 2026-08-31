@@ -1,4 +1,4 @@
-package com.algorithmxlr8.hexagonal.adapter.in.web.dto;
+package com.algorithmxlr8.hexagonal.domain.web.dto;
 
 import java.math.BigDecimal;
 

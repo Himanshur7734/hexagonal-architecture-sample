@@ -1,8 +1,10 @@
-package com.algorithmxlr8.hexagonal.adapter.out.persistence;
+package com.algorithmxlr8.hexagonal.domain.persistence;
 
-import com.algorithmxlr8.hexagonal.adapter.out.persistence.mapper.ProductPersistenceMapper;
-import com.algorithmxlr8.hexagonal.domain.model.Product;
-import com.algorithmxlr8.hexagonal.domain.port.out.ProductRepositoryPort;
+import com.algorithmxlr8.hexagonal.adapter.ProductRepositoryPort;
+import com.algorithmxlr8.hexagonal.application.entity.ProductJpaEntity;
+import com.algorithmxlr8.hexagonal.application.model.Product;
+import com.algorithmxlr8.hexagonal.application.repo.ProductJpaRepository;
+import com.algorithmxlr8.hexagonal.domain.persistence.mapper.ProductPersistenceMapper;
 import org.springframework.stereotype.Component;
 
 /**

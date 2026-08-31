@@ -1,4 +1,4 @@
-package com.algorithmxlr8.hexagonal.domain.port.in.command;
+package com.algorithmxlr8.hexagonal.adapter.command;
 
 import java.math.BigDecimal;
 

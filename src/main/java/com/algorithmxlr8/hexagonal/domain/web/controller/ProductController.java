@@ -1,10 +1,10 @@
-package com.algorithmxlr8.hexagonal.adapter.in.web;
+package com.algorithmxlr8.hexagonal.domain.web.controller;
 
-import com.algorithmxlr8.hexagonal.adapter.in.web.dto.ProductRequest;
-import com.algorithmxlr8.hexagonal.adapter.in.web.dto.ProductResponse;
-import com.algorithmxlr8.hexagonal.adapter.in.web.mapper.ProductWebMapper;
-import com.algorithmxlr8.hexagonal.domain.model.Product;
-import com.algorithmxlr8.hexagonal.domain.port.in.CreateProductUseCase;
+import com.algorithmxlr8.hexagonal.adapter.CreateProductUseCase;
+import com.algorithmxlr8.hexagonal.application.model.Product;
+import com.algorithmxlr8.hexagonal.domain.web.dto.ProductRequest;
+import com.algorithmxlr8.hexagonal.domain.web.dto.ProductResponse;
+import com.algorithmxlr8.hexagonal.domain.web.mapper.ProductWebMapper;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

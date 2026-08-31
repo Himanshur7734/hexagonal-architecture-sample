@@ -1,6 +1,6 @@
-package com.algorithmxlr8.hexagonal.domain.model;
+package com.algorithmxlr8.hexagonal.application.model;
 
-import com.algorithmxlr8.hexagonal.util.ValidationUtils;
+import com.algorithmxlr8.hexagonal.domain.util.ValidationUtils;
 
 import java.math.BigDecimal;
 import java.util.Objects;

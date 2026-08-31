@@ -1,4 +1,4 @@
-package com.algorithmxlr8.hexagonal.adapter.out.persistence;
+package com.algorithmxlr8.hexagonal.application.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

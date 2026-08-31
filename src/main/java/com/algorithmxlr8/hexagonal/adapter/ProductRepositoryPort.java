@@ -1,6 +1,6 @@
-package com.algorithmxlr8.hexagonal.domain.port.out;
+package com.algorithmxlr8.hexagonal.adapter;
 
-import com.algorithmxlr8.hexagonal.domain.model.Product;
+import com.algorithmxlr8.hexagonal.application.model.Product;
 
 /**
  * Output port. The application core depends on this abstraction only;

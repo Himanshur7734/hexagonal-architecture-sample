@@ -1,9 +1,9 @@
-package com.algorithmxlr8.hexagonal.application.service;
+package com.algorithmxlr8.hexagonal.domain.service;
 
-import com.algorithmxlr8.hexagonal.domain.model.Product;
-import com.algorithmxlr8.hexagonal.domain.port.in.CreateProductUseCase;
-import com.algorithmxlr8.hexagonal.domain.port.in.command.CreateProductCommand;
-import com.algorithmxlr8.hexagonal.domain.port.out.ProductRepositoryPort;
+import com.algorithmxlr8.hexagonal.adapter.CreateProductUseCase;
+import com.algorithmxlr8.hexagonal.adapter.ProductRepositoryPort;
+import com.algorithmxlr8.hexagonal.adapter.command.CreateProductCommand;
+import com.algorithmxlr8.hexagonal.application.model.Product;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
