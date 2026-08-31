@@ -4,8 +4,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 
-import java.math.BigDecimal;
-
 public class ProductRequest {
 
     @NotBlank
@@ -13,9 +11,8 @@ public class ProductRequest {
 
     private String description;
 
-    @NotNull
     @PositiveOrZero
-    private BigDecimal price;
+    private double price;
 
     @NotNull
     @PositiveOrZero
@@ -24,7 +21,7 @@ public class ProductRequest {
     public ProductRequest() {
     }
 
-    public ProductRequest(String name, String description, BigDecimal price, Integer quantity) {
+    public ProductRequest(String name, String description, double price, Integer quantity) {
         this.name = name;
         this.description = description;
         this.price = price;
@@ -47,11 +44,11 @@ public class ProductRequest {
         this.description = description;
     }
 
-    public BigDecimal getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

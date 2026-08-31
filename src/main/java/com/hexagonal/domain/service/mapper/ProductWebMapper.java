@@ -1,4 +1,4 @@
-package com.hexagonal.domain.rest.mapper;
+package com.hexagonal.domain.service.mapper;
 
 import com.hexagonal.application.model.Product;
 import com.hexagonal.domain.rest.dto.ProductRequest;

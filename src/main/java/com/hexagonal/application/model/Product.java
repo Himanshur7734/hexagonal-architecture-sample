@@ -2,7 +2,6 @@ package com.hexagonal.application.model;
 
 import com.hexagonal.domain.util.ValidationUtils;
 
-import java.math.BigDecimal;
 import java.util.Objects;
 
 public class Product {
@@ -10,7 +9,7 @@ public class Product {
     private Long id;
     private String name;
     private String description;
-    private BigDecimal price;
+    private double price;
     private Integer quantity;
 
     public Product() {
@@ -40,11 +39,11 @@ public class Product {
         this.description = description;
     }
 
-    public BigDecimal getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(double price) {
         this.price = ValidationUtils.requireNonNegative(price, "price");
     }
 

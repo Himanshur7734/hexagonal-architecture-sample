@@ -1,7 +1,5 @@
 package com.hexagonal.domain.util;
 
-import java.math.BigDecimal;
-
 public final class ValidationUtils {
 
     private ValidationUtils() {
@@ -14,8 +12,8 @@ public final class ValidationUtils {
         return value;
     }
 
-    public static BigDecimal requireNonNegative(BigDecimal value, String field) {
-        if (value == null || value.compareTo(BigDecimal.ZERO) < 0) {
+    public static double requireNonNegative(double value, String field) {
+        if (value < 0) {
             throw new IllegalArgumentException(field + " must not be negative");
         }
         return value;

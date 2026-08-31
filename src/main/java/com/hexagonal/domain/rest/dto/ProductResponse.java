@@ -1,19 +1,17 @@
 package com.hexagonal.domain.rest.dto;
 
-import java.math.BigDecimal;
-
 public class ProductResponse {
 
     private Long id;
     private String name;
     private String description;
-    private BigDecimal price;
+    private double price;
     private Integer quantity;
 
     public ProductResponse() {
     }
 
-    public ProductResponse(Long id, String name, String description, BigDecimal price, Integer quantity) {
+    public ProductResponse(Long id, String name, String description, double price, Integer quantity) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -45,11 +43,11 @@ public class ProductResponse {
         this.description = description;
     }
 
-    public BigDecimal getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

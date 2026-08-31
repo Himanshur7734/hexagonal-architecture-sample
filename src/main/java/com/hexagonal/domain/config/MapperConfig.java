@@ -1,7 +1,8 @@
 package com.hexagonal.domain.config;
 
 import com.hexagonal.application.mapper.ProductPersistenceMapper;
-import com.hexagonal.domain.rest.mapper.ProductWebMapper;
+import com.hexagonal.domain.service.mapper.ProductWebMapper;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

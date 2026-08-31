@@ -14,13 +14,14 @@ src/main/java/com/hexagonal/
   domain/                 All implementation logic that fulfils the ports
     service/
       ProductService.java         Implements CreateProductPort
+      mapper/
+        ProductWebMapper.java     DTO <-> domain conversion
     rest/
       controller/
         ProductController.java    REST entrypoint, delegates to ProductHandler
       handler/
         ProductHandler.java       Wires the use case + mapper, keeps mapping out of the controller
       dto/                        Request/response types (plain classes, not records)
-      mapper/                     DTO <-> domain conversion
       exception/                  REST error mapping
     persistence/
       ProductPersistenceAdapter.java  Implements ProductRepositoryPort
@@ -74,3 +75,5 @@ App starts on `http://localhost:8080`. In-memory H2 console at
 | Method | Path                | Body                                              |
 |--------|---------------------|----------------------------------------------------|
 | POST   | /api/products        | `{ "name", "description", "price", "quantity" }`   |
+
+`price` is a plain `double`, not `BigDecimal`.

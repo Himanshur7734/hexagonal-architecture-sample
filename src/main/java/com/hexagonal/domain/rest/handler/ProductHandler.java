@@ -4,7 +4,8 @@ import com.hexagonal.adapter.CreateProductPort;
 import com.hexagonal.application.model.Product;
 import com.hexagonal.domain.rest.dto.ProductRequest;
 import com.hexagonal.domain.rest.dto.ProductResponse;
-import com.hexagonal.domain.rest.mapper.ProductWebMapper;
+import com.hexagonal.domain.service.mapper.ProductWebMapper;
+
 import org.springframework.stereotype.Component;
 
 @Component
