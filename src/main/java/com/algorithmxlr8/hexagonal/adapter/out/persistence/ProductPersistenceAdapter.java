@@ -4,9 +4,6 @@ import com.algorithmxlr8.hexagonal.domain.model.Product;
 import com.algorithmxlr8.hexagonal.domain.port.out.ProductRepositoryPort;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-import java.util.Optional;
-
 /**
  * The concrete driven adapter for ProductRepositoryPort. Spring wires this
  * in wherever the port is required; swapping persistence technology means
@@ -26,16 +23,6 @@ class ProductPersistenceAdapter implements ProductRepositoryPort {
         ProductJpaEntity entity = toEntity(product);
         ProductJpaEntity saved = jpaRepository.save(entity);
         return toDomain(saved);
-    }
-
-    @Override
-    public Optional<Product> findById(Long id) {
-        return jpaRepository.findById(id).map(this::toDomain);
-    }
-
-    @Override
-    public List<Product> findAll() {
-        return jpaRepository.findAll().stream().map(this::toDomain).toList();
     }
 
     private ProductJpaEntity toEntity(Product product) {

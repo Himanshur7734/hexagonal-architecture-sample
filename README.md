@@ -1,6 +1,6 @@
 # Hexagonal Architecture Sample
 
-A minimal Product service (create + read) demonstrating ports-and-adapters
+A minimal Product create service demonstrating ports-and-adapters
 (hexagonal) architecture with Spring Boot.
 
 ## Layout
@@ -42,5 +42,3 @@ App starts on `http://localhost:8080`. In-memory H2 console at
 | Method | Path                | Body                                              |
 |--------|---------------------|----------------------------------------------------|
 | POST   | /api/products        | `{ "name", "description", "price", "quantity" }`   |
-| GET    | /api/products         | -                                                    |
-| GET    | /api/products/{id}     | -                                                    |
