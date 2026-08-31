@@ -3,9 +3,7 @@ package com.algorithmxlr8.hexagonal.domain.rest.mapper;
 import com.algorithmxlr8.hexagonal.application.model.Product;
 import com.algorithmxlr8.hexagonal.domain.rest.dto.ProductRequest;
 import com.algorithmxlr8.hexagonal.domain.rest.dto.ProductResponse;
-import org.springframework.stereotype.Component;
 
-@Component
 public class ProductWebMapper {
 
     public Product toDomain(ProductRequest request) {

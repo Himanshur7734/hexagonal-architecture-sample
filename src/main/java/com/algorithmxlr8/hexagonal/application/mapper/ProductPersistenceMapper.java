@@ -2,9 +2,7 @@ package com.algorithmxlr8.hexagonal.application.mapper;
 
 import com.algorithmxlr8.hexagonal.application.entity.ProductEntity;
 import com.algorithmxlr8.hexagonal.application.model.Product;
-import org.springframework.stereotype.Component;
 
-@Component
 public class ProductPersistenceMapper {
 
     public ProductEntity toEntity(Product product) {

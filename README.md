@@ -24,7 +24,7 @@ src/main/java/com/algorithmxlr8/hexagonal/
       exception/                  REST error mapping
     persistence/
       ProductPersistenceAdapter.java  Implements ProductRepositoryPort
-    config/                  Spring wiring (JPA repository/entity scan)
+    config/                  Spring wiring (JPA repository/entity scan, mapper beans)
     util/                    Framework-free helpers (validation guard clauses)
 
   application/             Data-holding types: entity, model, repository, mapper
@@ -48,7 +48,9 @@ the mapper that converts between them, since it only ever touches those
 two types. Every DTO, entity, and the domain model itself is a plain
 class with private fields and explicit getters/setters - no records, no
 Lombok, no builders. Mappers build the target object with `new` and then
-call each setter explicitly, field by field.
+call each setter explicitly, field by field. Neither mapper carries a
+Spring stereotype annotation - both are registered as beans explicitly
+in `domain/config/MapperConfig.java`.
 
 The controller never touches a mapper directly - it only calls
 `ProductFacade`, which owns both the use case and the web mapper.
